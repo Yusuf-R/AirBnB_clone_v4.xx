@@ -56,7 +56,6 @@ $(document).ready(function() {
 		},
 		success: function(data, status) {
 			if (status === 'success') {
-				// $('section.places').empty();
 				for (let i = 0; i < data.length; i++) {
 					$('section.places').append(
 						'<article>'+
@@ -151,6 +150,7 @@ $(document).ready(function() {
 	})
 
 // combine all the result checked and search base on the parameters when button is clicked
+	
 		$('button').on('click', function() {
 		const urlPlaceSearch = 'http://0.0.0.0:5001/api/v1/places_search/'
 		const userPreference = {
@@ -176,7 +176,6 @@ $(document).ready(function() {
 			success: function(data, status) {
 				if (status === 'success') {
 					$('section.places').empty();
-					console.log("My list is : " + data.length );
 					for (let i = 0; i < data.length; i++) {
 						$('section.places').append(
 							'<article>'+
@@ -184,12 +183,17 @@ $(document).ready(function() {
 							'<h2>'+ data[i].name + '</h2>'+
 							'<div class="price_by_night">'+"$"+data[i].price_by_night+'</div>'+ '</div>'+
 							'<div class="information">'+
-								'<div class="max_guest">'+data[i].max_guest+' Guests</div>'+
+							'<div class="max_guest">'+data[i].max_guest+' Guests</div>'+
 							'<div class="number_rooms">'+data[i].number_rooms+' Bedrooms</div>'+
-							'<div class="number_bathrooms">'+data[i].number_bathrooms +' Bathrooms</div>'+
-							'</div>'+
+							'<div class="number_bathrooms">'+data[i].number_bathrooms +
+							' Bathrooms</div>'+ '</div>'+
 							'<div class="user">'+ '<b>Owner: </b>'+ '</div>'+
-							'<div class="description">'+data[i].description+'</div>'+
+							'<div class="description">'+data[i].description+'</div>' +
+							'<div class="reviews">'+ 
+							'<h2> <span class="num">Reviews</span>' +
+							'<span class="reviews" data-id="${place.id}">Show</span></h2>' +
+							'<ul> </ul>' + 
+							'</div>' + 
 							'</article>');
 					}
 				}

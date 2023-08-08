@@ -54,6 +54,7 @@ $(document).ready(function() {
 		},
 		success: function(data, status) {
 			if (status === 'success') {
+				// $('section.places').empty();
 				for (let i = 0; i < data.length; i++) {
 					$('section.places').append(
 						'<article>'+
@@ -99,7 +100,7 @@ $(document).ready(function() {
 			},
 			success: function(data, status) {
 				if (status === 'success') {
-					console.log("My list is : " + data.length );
+					$('section.places').empty();
 					for (let i = 0; i < data.length; i++) {
 						$('section.places').append(
 							'<article>'+
