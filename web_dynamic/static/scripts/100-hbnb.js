@@ -150,15 +150,14 @@ $(document).ready(function() {
 	})
 
 // combine all the result checked and search base on the parameters when button is clicked
-	
-	const userPreference = {
-		state: Object.keys(stateDefine),
-		city: Object.keys(cityDefine),
-		amenities: Object.keys(amenityDefine)
-	};
-
 		$('button').on('click', function() {
 		const urlPlaceSearch = 'http://0.0.0.0:5001/api/v1/places_search/'
+		const userPreference = {
+			state: Object.keys(stateDefine),
+			city: Object.keys(cityDefine),
+			amenities: Object.keys(amenityDefine)
+		};
+
 		$.ajax({
 			url: urlPlaceSearch,
 			type: 'POST',
